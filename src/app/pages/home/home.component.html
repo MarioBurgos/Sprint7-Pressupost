@@ -1,0 +1,8 @@
+<h2>¿Qué quieres hacer?</h2>
+<div class="container-check">
+    <div *ngFor="let p of products">
+        <app-my-checkbox [input]="p" (change)="getPrice(p)"></app-my-checkbox>
+    </div>
+</div>
+
+<p>Precio: {{ totalPrice | currency}} </p>

@@ -1,0 +1,9 @@
+.container {
+    &-check {
+        display: inline-block;
+        flex-direction: column;
+        &:checked {
+            color: green;
+        }
+    }
+}
