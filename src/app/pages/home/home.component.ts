@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
 
   public products: Product[];
   public totalPrice: number;
+  public panelPrice!: number;
   public isChecked: boolean;
 
   constructor(private productService: ProductService) {
@@ -21,7 +22,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProducts();
-    console.log(this.products)
   }
 
   getProducts(): void{
@@ -31,7 +31,15 @@ export class HomeComponent implements OnInit {
 
   getPrice(p: Product){
     p.isChecked ? this.totalPrice+=p.price : this.totalPrice-=p.price;
-    console.log(this.totalPrice);
+  }
+
+  getName(p: Product){
+    return p.name;
+  }
+
+  processExtras(){
+    this.totalPrice += Number(this.panelPrice);
+    console.log('PanelPrice: ' +this.panelPrice);
   }
 
 }

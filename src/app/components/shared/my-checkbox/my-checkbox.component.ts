@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class MyCheckboxComponent implements OnInit {
 
-  @Input() public input: any;
+  @Input() public product: any;
 
   constructor() {
   }
@@ -16,7 +16,7 @@ export class MyCheckboxComponent implements OnInit {
   }
 
   toggleCheck():void{
-    this.input.isChecked = !this.input.isChecked;
+    this.product.isChecked = !this.product.isChecked;
   }
 
 }
