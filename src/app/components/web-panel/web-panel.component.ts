@@ -8,10 +8,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class WebPanelComponent implements OnInit {
 
   @Input() public inputLabel!: string;
-  @Output() emitterPanel: EventEmitter<string> = new EventEmitter<string>();
+  @Output() emitterPanel: EventEmitter<string> = new EventEmitter();
 
-  public nPages = 0;
-  public nLang = 0;
+  public nPages = 1;
+  public nLang = 1;
+
   public label = {
     pages: "Número de páginas",
     lang: "Número de idiomas",
@@ -25,12 +26,14 @@ export class WebPanelComponent implements OnInit {
 
   calcPanelPrice(): string {
     let result = Number(this.nPages) * Number(this.nLang) * 30;
+    // console.log(result);
     return String(result);
   }
 
-  emitOnChanges() {
 
-    this.emitterPanel.emit(String(this.calcPanelPrice()));
+  emitOnChanges() {
+    // console.log(this.calcPanelPrice());
+    this.emitterPanel.emit(this.calcPanelPrice());
   }
 
 }

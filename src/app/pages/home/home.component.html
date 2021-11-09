@@ -4,7 +4,7 @@
         <app-my-checkbox [product]="p" (change)="getPrice(p)"></app-my-checkbox>
 
         <div *ngIf="p.isChecked && p.name === 'web'">
-            <app-web-panel (emitterPanel)="panelPrice" (change)="processExtras();"></app-web-panel>
+            <app-web-panel (emitterPanel)="getPanelPrice($event)" (change)="processTotalPrice();"></app-web-panel>
         </div>
     </div>
 </div>

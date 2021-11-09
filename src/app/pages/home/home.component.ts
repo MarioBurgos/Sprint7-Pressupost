@@ -10,13 +10,15 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   public products: Product[];
-  public totalPrice: number;
-  public panelPrice!: number;
+  public basePrice: number;  // representa los precios de los componentes de Home Component
+  public panelPrice!: number;  // representa los precios de los componentes de WebPanel Component
+  public totalPrice: number;  // representa la suma de base+panel
   public isChecked: boolean;
 
   constructor(private productService: ProductService) {
     this.products = [];
     this.totalPrice = 0;
+    this.basePrice = 0;
     this.isChecked = false;
    }
 
@@ -30,16 +32,23 @@ export class HomeComponent implements OnInit {
   }
 
   getPrice(p: Product){
-    p.isChecked ? this.totalPrice+=p.price : this.totalPrice-=p.price;
+    p.isChecked ? this.basePrice+=p.price : this.basePrice-=p.price;
+    this.totalPrice = this.basePrice;
   }
 
   getName(p: Product){
     return p.name;
   }
 
-  processExtras(){
-    this.totalPrice += Number(this.panelPrice);
-    console.log('PanelPrice: ' +this.panelPrice);
+  getPanelPrice(evt: string){
+    this.panelPrice = Number(evt);
+    this.panelPrice === 30 ? this.panelPrice = 0 : this.panelPrice;
+    //condicional para controlar si el user introduce 1 página + 1 idioma: estaría dentro del precio base, con lo cual no hay que multiplicar nPages * nLang * 30
+  }
+
+  processTotalPrice(){
+    this.totalPrice = this.basePrice + Number(this.panelPrice);
+    // console.log('PanelPrice: ' +this.panelPrice);
   }
 
 }
