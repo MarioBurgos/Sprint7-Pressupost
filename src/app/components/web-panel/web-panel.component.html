@@ -1,6 +1,6 @@
 <div class="panel">
-    <app-my-input-w-buttons [label]="label.pages" (emitterInputWButtons)="getNPages($event)" (change)="emitOnChanges()"></app-my-input-w-buttons>
-    <app-my-input-w-buttons [label]="label.lang" (emitterInputWButtons)="getNLanguages($event)" (change)="emitOnChanges()"></app-my-input-w-buttons>
+    <app-my-input-w-buttons [inputLabel]="label.pages" (emitterInputWButtons)="getNPages($event)" (change)="emitOnChanges()"></app-my-input-w-buttons>
+    <app-my-input-w-buttons [inputLabel]="label.lang" (emitterInputWButtons)="getNLanguages($event)" (change)="emitOnChanges()"></app-my-input-w-buttons>
     <!-- <div>
         <label for="input">{{label.pages}}</label><input type="text" name="input" id="nPages" [(ngModel)]="nPages" (change)="emitOnChanges()">
     </div>

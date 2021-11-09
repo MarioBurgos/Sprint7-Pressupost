@@ -7,7 +7,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class MyInputWButtonsComponent implements OnInit {
 
-  @Input() public label: any;
+  @Input() public inputLabel: any;
   @Output() emitterInputWButtons = new EventEmitter<string>();
   public value:number = 1;
 
