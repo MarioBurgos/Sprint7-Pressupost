@@ -24,12 +24,20 @@ export class WebPanelComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getNPages(evt: string){
+    this.nPages = Number(evt);
+  }
+  getNLanguages(evt: string){
+    this.nLang = Number(evt);
+    console.log(this.nLang);
+
+  }
+
   calcPanelPrice(): string {
-    let result = Number(this.nPages) * Number(this.nLang) * 30;
+    let result = this.nPages * this.nLang * 30;
     // console.log(result);
     return String(result);
   }
-
 
   emitOnChanges() {
     // console.log(this.calcPanelPrice());

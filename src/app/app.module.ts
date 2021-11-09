@@ -7,6 +7,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { MyCheckboxComponent } from './components/shared/my-checkbox/my-checkbox.component';
 import { FormsModule } from '@angular/forms';
 import { WebPanelComponent } from './components/web-panel/web-panel.component';
+import { MyInputWButtonsComponent } from './components/shared/my-input-w-buttons/my-input-w-buttons.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { WebPanelComponent } from './components/web-panel/web-panel.component';
     HomeComponent,
     MyCheckboxComponent,
     WebPanelComponent,
+    MyInputWButtonsComponent,
   ],
   imports: [
     BrowserModule,
