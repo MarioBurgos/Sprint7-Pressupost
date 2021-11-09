@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { MyInputWButtonsComponent } from '../shared/my-input-w-buttons/my-input-w-buttons.component';
 
 @Component({
   selector: 'app-web-panel',
@@ -26,16 +27,16 @@ export class WebPanelComponent implements OnInit {
 
   getNPages(evt: string){
     this.nPages = Number(evt);
+    console.log("NPages: " + this.nPages)
   }
   getNLanguages(evt: string){
     this.nLang = Number(evt);
-    console.log(this.nLang);
-
+    console.log("NLang: " + this.nLang)
   }
 
   calcPanelPrice(): string {
     let result = this.nPages * this.nLang * 30;
-    // console.log(result);
+    console.log(result);
     return String(result);
   }
 

@@ -16,16 +16,17 @@ export class MyInputWButtonsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  emitOnChanges(){
+  emitValue(){
     this.emitterInputWButtons.emit(String(this.value));
   }
 
   increaseValue(){
     this.value++;
+    this.emitValue();
   }
 
   decreaseValue(){
     this.value === 1 ? this.value : this.value--;
+    this.emitValue();
   }
-
 }
