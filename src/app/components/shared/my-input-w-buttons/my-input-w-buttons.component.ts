@@ -8,7 +8,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 export class MyInputWButtonsComponent implements OnInit {
 
   @Input() public inputLabel: any;
-  @Output() emitterInputWButtons = new EventEmitter<string>();
+  @Output() emitterInputWButtons = new EventEmitter<any>();
   public value:number = 1;
 
   constructor() { }
@@ -17,16 +17,19 @@ export class MyInputWButtonsComponent implements OnInit {
   }
 
   emitValue(){
+    // console.log("InputWButtons:// EmitValue: " + this.value)
     this.emitterInputWButtons.emit(String(this.value));
   }
 
   increaseValue(){
     this.value++;
+    // console.log("InputWButtons:// IncreaseValue: " + this.value)
     this.emitValue();
   }
 
   decreaseValue(){
     this.value === 1 ? this.value : this.value--;
+    // console.log("InputWButtons:// DecreaseValue: " + this.value)
     this.emitValue();
   }
 }

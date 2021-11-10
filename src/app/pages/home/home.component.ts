@@ -50,5 +50,4 @@ export class HomeComponent implements OnInit {
     this.totalPrice = this.basePrice + Number(this.panelPrice);
     // console.log('PanelPrice: ' +this.panelPrice);
   }
-
 }

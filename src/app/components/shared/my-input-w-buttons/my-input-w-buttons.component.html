@@ -1,6 +1,6 @@
 <div class="input-w-buttons">
     <label for="input">{{inputLabel}}</label>
     <button (click)="decreaseValue()">-</button>
-    <input [(ngModel)]="value" type="text" name="input" value="{{value}}" (change)="emitValue()" />
+    <input [(ngModel)]="value" type="text" name="input" (change)="emitValue()" />
     <button (click)="increaseValue()">+</button>
 </div>
