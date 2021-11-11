@@ -1,5 +1,7 @@
-<h2>¿Qué quieres hacer?</h2>
-<div class="container-check">
+<div class="container title">
+    <h2>¿Qué quieres hacer?</h2>
+</div>
+<div class="container check">
     <div *ngFor="let p of products">
         <app-my-checkbox [product]="p" (change)="getPrice(p)"></app-my-checkbox>
         <div *ngIf="p.isChecked && p.name === 'web'">
@@ -7,4 +9,10 @@
         </div>
     </div>
 </div>
-<p>Precio: {{ totalPrice | currency}} </p>
+<div class="container">
+    <p>Precio: {{ totalPrice | currency:'EUR'}} </p>
+</div>
+
+<div class="pt-2 text-center">
+    <button class="mb-5" [routerLink]="['/dashboard']">Atrás</button>
+</div>

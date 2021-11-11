@@ -1,6 +1,15 @@
 .container {
-    &-check {
+    margin: 3rem 2rem;
+    & .check {
         display: inline-block;
         flex-direction: column;
     }
+    & .title {
+        margin-top: 2rem;
+    }
+}
+
+button {
+    width: 100px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }

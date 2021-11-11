@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -8,6 +8,7 @@ import { MyCheckboxComponent } from './components/shared/my-checkbox/my-checkbox
 import { FormsModule } from '@angular/forms';
 import { WebPanelComponent } from './components/web-panel/web-panel.component';
 import { MyInputWButtonsComponent } from './components/shared/my-input-w-buttons/my-input-w-buttons.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -16,13 +17,14 @@ import { MyInputWButtonsComponent } from './components/shared/my-input-w-buttons
     MyCheckboxComponent,
     WebPanelComponent,
     MyInputWButtonsComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -2,17 +2,4 @@
     margin: 1rem 0;
     display: flex;
     flex-direction: column;
-    & div {
-        margin-bottom: 1rem;
-        margin-left: auto;
-    }
-}
-
-label {
-    margin: 0.5rem;
-}
-
-input {
-    width: 30px;
-    text-align: end;
 }
