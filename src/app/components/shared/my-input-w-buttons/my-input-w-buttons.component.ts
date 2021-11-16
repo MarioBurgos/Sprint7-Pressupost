@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-my-input-w-buttons',
@@ -11,7 +12,7 @@ export class MyInputWButtonsComponent implements OnInit {
   @Output() emitterInputWButtons = new EventEmitter<any>();
   public value:number = 1;
 
-  constructor() { }
+  constructor(private modal:NgbModal) { }
 
   ngOnInit(): void {
   }
@@ -31,5 +32,9 @@ export class MyInputWButtonsComponent implements OnInit {
     this.value === 1 ? this.value : this.value--;
     // console.log("InputWButtons:// DecreaseValue: " + this.value)
     this.emitValue();
+  }
+
+  onClickInfo(){
+    this.modal.open('');
   }
 }

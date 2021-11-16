@@ -19,4 +19,6 @@ export class MyCheckboxComponent implements OnInit {
     this.product.isChecked = !this.product.isChecked;
   }
 
+
+
 }
