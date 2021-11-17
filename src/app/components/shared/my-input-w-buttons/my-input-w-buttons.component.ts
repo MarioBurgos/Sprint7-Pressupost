@@ -9,6 +9,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class MyInputWButtonsComponent implements OnInit {
 
   @Input() public inputLabel: any;
+  @Input() public inputModal: any;
   @Output() emitterInputWButtons = new EventEmitter<any>();
   public value:number = 1;
 
@@ -35,6 +36,6 @@ export class MyInputWButtonsComponent implements OnInit {
   }
 
   onClickInfo(){
-    this.modal.open('hardcoded en componente inputWBtn');
+    this.modal.open(this.inputModal);
   }
 }

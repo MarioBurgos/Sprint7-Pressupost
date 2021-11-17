@@ -17,8 +17,12 @@ export class WebPanelComponent implements OnInit {
   public nLang = 1;
 
   public label = {
-    pages: ``,
-    lang: ``,
+    pages: '',
+    lang: ''
+  };
+  public modal = {
+    pages: '',
+    lang: ''
   }
 
   constructor(private productService: ProductService) {
@@ -30,7 +34,14 @@ export class WebPanelComponent implements OnInit {
       .subscribe(p => {
         p.find(web => web.prodName === 'web')
         this.webProduct = p[0];
-        console.log(this.webProduct)
+        this.label = {
+          pages: this.webProduct.extras[0].nameXtra,
+          lang: this.webProduct.extras[1].nameXtra,
+        };
+        this.modal = {
+          pages: this.webProduct.extras[0].modal,
+          lang: this.webProduct.extras[1].modal,
+        }
       });
 
   }

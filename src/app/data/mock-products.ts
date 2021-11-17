@@ -5,7 +5,14 @@ export const PRODUCTS: Product[] = [
     label: "Una página web",
     price: 500,
     isChecked: false,
-    extras: ['páginas', 'idiomas']
+    extras: [{
+      nameXtra: "nº páginas",
+      modal: "seleccione el número de páginas que componen su sitio web."
+    },
+    {
+      nameXtra: "nº idiomas",
+      modal: "seleccione el número de idiomas al que quiere traducir su sitio web."
+    }]
   },
   {
     prodName: "seo",
