@@ -35,6 +35,6 @@ export class MyInputWButtonsComponent implements OnInit {
   }
 
   onClickInfo(){
-    this.modal.open('');
+    this.modal.open('hardcoded en componente inputWBtn');
   }
 }

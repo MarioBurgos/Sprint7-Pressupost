@@ -1,6 +1,7 @@
 export interface Product {
-  name: string,
+  prodName: string,
   label: string,
   price: number,
   isChecked: boolean,
+  extras: any[],
 }

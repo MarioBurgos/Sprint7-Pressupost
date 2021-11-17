@@ -1,22 +1,25 @@
 import { Product } from './../interfaces/product';
 export const PRODUCTS: Product[] = [
   {
-    name: "web",
+    prodName: "web",
     label: "Una página web",
     price: 500,
     isChecked: false,
+    extras: ['páginas', 'idiomas']
   },
   {
-    name: "seo",
+    prodName: "seo",
     label: "Una consultoría SEO",
     price: 300,
     isChecked: false,
+    extras: []
   },
   {
-    name: "ads",
+    prodName: "ads",
     label: "Una campaña de Google Ads",
     price: 200,
     isChecked: false,
+    extras: []
   },
 
 ]

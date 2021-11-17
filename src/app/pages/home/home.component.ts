@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
   }
 
   getName(p: Product){
-    return p.name;
+    return p.prodName;
   }
 
   getPanelPrice(evt: string){

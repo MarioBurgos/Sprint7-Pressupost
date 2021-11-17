@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { ProductService } from './../../services/product.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Product } from 'src/app/interfaces/product';
 
 @Component({
   selector: 'app-web-panel',
@@ -7,21 +9,30 @@ import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angu
 })
 export class WebPanelComponent implements OnInit {
 
-  @Input() public inputLabel!: string;
+
   @Output() emitterPanel: EventEmitter<string> = new EventEmitter();
 
+  public webProduct!: Product;
   public nPages = 1;
   public nLang = 1;
 
   public label = {
-    pages: "Número de páginas",
-    lang: "Número de idiomas",
+    pages: ``,
+    lang: ``,
   }
 
-  constructor() {
+  constructor(private productService: ProductService) {
+
   }
 
   ngOnInit(): void {
+    this.productService.getProducts()
+      .subscribe(p => {
+        p.find(web => web.prodName === 'web')
+        this.webProduct = p[0];
+        console.log(this.webProduct)
+      });
+
   }
 
   getNPages(evt: string){
