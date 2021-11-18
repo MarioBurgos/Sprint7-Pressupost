@@ -36,6 +36,6 @@ export class MyInputWButtonsComponent implements OnInit {
   }
 
   onClickInfo(){
-    this.modal.open(this.inputModal);
+    this.modal.open(this.inputModal, {size: 'md', centered: true, windowClass: 'modal' });
   }
 }

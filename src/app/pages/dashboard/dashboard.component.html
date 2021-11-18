@@ -1,17 +1,40 @@
 <div class="container">
-    <article class="container">
-        <h1 class="py-5">{{DATA.title}}</h1>
-        <h5 class="pb-4 text-muted text-justify">{{DATA.preamble}}</h5>
-        <section class="text-justify">
-            <p class="pb-1"><b>Descripción de la aplicación:</b></p>
-            <p>{{DATA.modelDescription}} </p>
-            <img src="../../../assets/img/screenshots/screenshot-model.PNG" height="150px" alt="model">
-            <p>{{DATA.generalFunctioning}}</p>
-            <p>{{DATA.homeComponentFuncionting}}</p>
-            <img src="../../../assets/img/screenshots/screenshot-home.PNG" height="300px" alt="model">
-            <p>{{DATA.checkboxComponentFunctioning}}</p>
-            <p>{{DATA.panelComponentFunctioning}}</p>
-            <p>{{DATA.inputWithButtonsComponent}}</p>
+    <article class="container text-justify">
+        <h1 class="py-2">{{DATA.title}}</h1>
+        <h5 class="pb-5 text-muted ">{{DATA.preamble}}</h5>
+        <section>
+            <article>
+                <div class="row">
+                    <h2 class="pb-3"><b>Descripción de la aplicación:</b></h2>
+                    <div class="col-lg-9  my-auto">
+
+                        <p>{{DATA.modelDescription}} </p>
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="../../../assets/img/screenshots/screenshot-model.PNG" alt="model">
+                    </div>
+                </div>
+                <div class="row my-4">
+                    <div class="col-lg-6">
+                        <img src="../../../assets/img/screenshots/screenshot-home.PNG" height="350px" alt="Home Component">
+                    </div>
+                    <div class="col-lg-6 my-auto">
+                        <p>{{DATA.generalFunctioning}}</p>
+                        <p>{{DATA.homeComponentFuncionting}}</p>
+                    </div>
+                </div>
+                <div class="row my-4">
+                    <div class="col-lg-6  my-auto">
+                        <p>{{DATA.checkboxComponentFunctioning}}</p>
+                        <p>{{DATA.panelComponentFunctioning}}</p>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="../../../assets/img/screenshots/estructura-componentes.png" height="400px" alt="Estructura Componentes">
+                    </div>
+                </div>
+
+
+            </article>
             <p>{{DATA.closing}}</p>
         </section>
         <div class="pt-2 text-center">
