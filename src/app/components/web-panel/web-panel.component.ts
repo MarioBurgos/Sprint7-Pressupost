@@ -1,13 +1,21 @@
 import { ProductService } from './../../services/product.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from 'src/app/interfaces/product';
+import { FormControl, FormGroup, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-web-panel',
   templateUrl: './web-panel.component.html',
-  styleUrls: ['./web-panel.component.scss']
+  styleUrls: ['./web-panel.component.scss'],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      multi: true,
+      useExisting: WebPanelComponent
+    },
+  ]
 })
-export class WebPanelComponent implements OnInit {
+export class WebPanelComponent implements OnInit, ControlValueAccessor {
 
 
   @Output() emitterPanel: EventEmitter<string> = new EventEmitter();
@@ -25,8 +33,21 @@ export class WebPanelComponent implements OnInit {
     lang: ''
   }
 
+  myGroup = new FormGroup({
+    formPanel: new FormControl()
+  });
+
   constructor(private productService: ProductService) {
 
+  }
+  writeValue(obj: any): void {
+    throw new Error('Method not implemented.');
+  }
+  registerOnChange(fn: any): void {
+    throw new Error('Method not implemented.');
+  }
+  registerOnTouched(fn: any): void {
+    throw new Error('Method not implemented.');
   }
 
   ngOnInit(): void {

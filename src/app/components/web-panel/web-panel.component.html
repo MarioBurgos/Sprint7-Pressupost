@@ -1,4 +1,4 @@
-<div class="panel">
+<div [formGroup]="myGroup" formControlName="formPanel" class="panel">
     <app-my-input-w-buttons [inputModal]="modal.pages" [inputLabel]="label.pages | titlecase" (emitterInputWButtons)="getNPages($event)" (change)="emitOnChanges()"></app-my-input-w-buttons>
     <app-my-input-w-buttons [inputModal]="modal.lang" [inputLabel]="label.lang | titlecase" (emitterInputWButtons)="getNLanguages($event)" (change)="emitOnChanges()"></app-my-input-w-buttons>
     <!-- <div>

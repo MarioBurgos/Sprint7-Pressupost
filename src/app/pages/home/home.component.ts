@@ -1,6 +1,7 @@
 import { ProductService } from './../../services/product.service';
 import { Product } from './../../interfaces/product';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -9,13 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  public form!: FormGroup;
+
   public products: Product[];
   public basePrice: number;  // representa los precios de los componentes de Home Component
   public panelPrice!: number;  // representa los precios de los componentes de WebPanel Component
   public totalPrice: number;  // representa la suma de base+panel
   public isChecked: boolean;
 
-  constructor(private productService: ProductService) {
+  constructor(
+    private formBuilder:FormBuilder,
+    private productService: ProductService,
+    ) {
+
     this.products = [];
     this.totalPrice = 0;
     this.basePrice = 0;
@@ -24,6 +31,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProducts();
+    this.form = this.formBuilder.group({
+      formCheckbox: "",
+      formPanel: "",
+      formInputWButtons: ""
+    });
   }
 
   getProducts(): void{
@@ -36,11 +48,7 @@ export class HomeComponent implements OnInit {
     this.totalPrice = this.basePrice;
   }
 
-  getName(p: Product){
-    return p.prodName;
-  }
-
-  getPanelPrice(evt: string){
+  getPanelPrice(evt: string){0
     this.panelPrice = Number(evt);
     this.panelPrice === 30 ? this.panelPrice = 0 : this.panelPrice;
     //condicional para controlar si el user introduce 1 página + 1 idioma: estaría dentro del precio base, con lo cual no hay que multiplicar nPages * nLang * 30

@@ -1,14 +1,14 @@
 <div class="container title">
     <h2>¿Qué quieres hacer?</h2>
 </div>
-<div class="container check">
+<form [formGroup]="form" class="container check">
     <div *ngFor="let p of products">
-        <app-my-checkbox [product]="p" (change)="getPrice(p)"></app-my-checkbox>
+        <app-my-checkbox formControlName="formCheckbox" [product]="p" (change)="getPrice(p)"></app-my-checkbox>
         <div *ngIf="p.isChecked && p.prodName === 'web'">
-            <app-web-panel (emitterPanel)="getPanelPrice($event)" (change)="processTotalPrice();"></app-web-panel>
+            <app-web-panel formControlName="formPanel" (emitterPanel)="getPanelPrice($event)" (change)="processTotalPrice();"></app-web-panel>
         </div>
     </div>
-</div>
+</form>
 <div class="container">
     <p>Precio: {{ totalPrice | currency:'EUR'}} </p>
 </div>
