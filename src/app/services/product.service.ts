@@ -9,19 +9,29 @@ import { Product } from '../interfaces/product';
 })
 export class ProductService {
 
-  private order!: Order; //para el presupuesto que maneja el usuario
   private orders: Order[] = []; //para el listado de presupuestos
 
   constructor() { }
 
   //devuelve una promesa/observable de todos los productos de la BD en un Array de Product
-  getProducts(): Observable<Product[]>{
-    return of (PRODUCTS!);
+  getProducts(): Observable<Product[]> {
+    return of(PRODUCTS!);
   }
 
-  //graba un presupuesto
-  createOrder(){
+  getOrders():Order[]{
+    return this.orders;
   }
 
+  //graba un presupuesto, devuelve true si se ha añadido, false en caso contrario
+  createOrder(order: Order): boolean {
+    try {
+      this.orders.push(order);
+      return true;
+    } catch (error) {
+      return false;
+    }
   }
+}
+
+
 
