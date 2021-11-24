@@ -1,3 +1,4 @@
+import { OrderModel } from '../model/order.model';
 import { Order } from './../interfaces/order';
 import { PRODUCTS } from './../data/mock-products';
 import { Injectable } from '@angular/core';
@@ -9,27 +10,32 @@ import { Product } from '../interfaces/product';
 })
 export class ProductService {
 
-  private orders: Order[] = []; //para el listado de presupuestos
+  private allOrders: Order[] = []; //para el listado de presupuestos
 
-  constructor() { }
+  constructor() {
+  }
 
   //devuelve una promesa/observable de todos los productos de la BD en un Array de Product
   getProducts(): Observable<Product[]> {
     return of(PRODUCTS!);
   }
 
-  getOrders():Order[]{
-    return this.orders;
+  getAllOrders(): Order[] {
+    return this.allOrders;
   }
 
   //graba un presupuesto, devuelve true si se ha añadido, false en caso contrario
-  createOrder(order: Order): boolean {
+  addOrder(order: Order): boolean {
     try {
-      this.orders.push(order);
+      this.allOrders.push(order);
       return true;
     } catch (error) {
       return false;
     }
+  }
+
+  getOrderPrice(order: Order): number {
+    return order.getTotalPrice();
   }
 }
 

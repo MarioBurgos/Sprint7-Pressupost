@@ -7,11 +7,17 @@ export const PRODUCTS: Product[] = [
     isChecked: false,
     extras: [{
       nameXtra: "nº páginas",
-      modal: "seleccione el número de páginas que componen su sitio web."
+      modal: "seleccione el número de páginas que componen su sitio web.",
+      priceXtra: 30,
+      quantity: 1,
+
     },
     {
       nameXtra: "nº idiomas",
-      modal: "seleccione el número de idiomas al que quiere traducir su sitio web."
+      modal: "seleccione el número de idiomas al que quiere traducir su sitio web.",
+      priceXtra: 30,
+      quantity: 1,
+
     }]
   },
   {
