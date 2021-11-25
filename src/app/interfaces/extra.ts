@@ -1,6 +1,6 @@
 export interface Extra {
-  nameXtra: string;
+  label: string;
   modal: string;
-  priceXtra: number;
+  price: number;
   quantity: number;
 }

@@ -7,6 +7,4 @@ export interface Product {
   price: number;
   isChecked: boolean;
   extras: Extra[];
-
-  getExtrasPrice(): number;
 }
