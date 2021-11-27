@@ -20,17 +20,25 @@
 <div class="container title">
     <h2>¿Qué quieres hacer?</h2>
 </div>
-<form [formGroup]="form" class="container check">
+<form class="container check">
     <div *ngFor="let p of products">
-        <app-my-checkbox formControlName="formCheckbox" [product]="p" (change)="getPrice(p)"></app-my-checkbox>
-        <div *ngIf="p.isChecked && p.prodName === 'web'">
-            <app-web-panel formControlName="formPanel" (emitterPanel)="getPanelPrice($event)" (change)="processTotalPrice();"></app-web-panel>
-        </div>
+        <app-my-checkbox [product]="p"></app-my-checkbox>
     </div>
 </form>
 <div class="container">
-    <p>Precio: {{ totalPrice | currency:'EUR'}} </p>
+    <p>Precio: {{ orderPrice }}</p>
 </div>
+<div class="container w-50 me-auto">
+    <div class="input-group mb-2">
+        <input type="text" #customerName class="form-control" placeholder="Nombre">
+        <div class="input-group-prepend">
+            <div class="input-group-text">
+                <div class="btn btn-outline" (click)="addOrder()">Enviar</div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <div class="pt-2 text-center">
     <button class="mb-5" [routerLink]="['/dashboard']">Atrás</button>

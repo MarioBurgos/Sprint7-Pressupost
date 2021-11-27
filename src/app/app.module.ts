@@ -26,7 +26,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [ ProductService],
+  providers: [ ProductService ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

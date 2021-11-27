@@ -14,12 +14,18 @@ export class ProductService {
 /**
  * https://levelup.gitconnected.com/5-ways-to-share-data-between-angular-components-d656a7eb7f96 (5. Between not related c)
  */
-  private products: Product[] = [];
-  private webExtras: Extra[] = [];
   private allOrders: Order[] = []; //para el listado de presupuestos
+  private order: Order;
 
   constructor() {
+    this.order = {
+      custName: "",
+      products: [],
+      totalPrice : 0
+    }
   }
+
+
 
   //devuelve una promesa/observable de todos los productos de la BD en un Array de Product
   getProducts(): Observable<Product[]> {
@@ -28,23 +34,38 @@ export class ProductService {
   getExtras(): Observable<Extra[]>{
     return of(EXTRAS_WEB!);
   }
-
+  getOrder(): Order {
+    return this.order;
+  }
   getAllOrders(): Order[] {
     return this.allOrders;
   }
+  getCustomerName(): string{
+    return this.order.custName;
+  }
+
+  setCustomerName(cName: string){
+    this.order.custName = cName;
+  }
+
+  /**
+   * metodos que actuan sobre los datos del pedido
+   */
+  addProduct(product: Product){
+    this.order.products.push(product);
+  }
+
 
   //graba un presupuesto, devuelve true si se ha añadido, false en caso contrario
-  addOrder(order: Order): boolean {
+  addOrder(): boolean {
     try {
-      this.allOrders.push(order);
+      this.allOrders.push(this.order);
       return true;
     } catch (error) {
       return false;
     }
   }
-  getOrderPrice(order: Order): number {
-    return order.getTotalPrice();
-  }
+
 }
 
 

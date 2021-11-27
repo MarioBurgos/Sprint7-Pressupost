@@ -1,21 +1,16 @@
 import { ProductService } from './../../services/product.service';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Product } from 'src/app/interfaces/product';
-import { FormControl, FormGroup, ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'app-web-panel',
   templateUrl: './web-panel.component.html',
   styleUrls: ['./web-panel.component.scss'],
   providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      multi: true,
-      useExisting: WebPanelComponent
-    },
   ]
 })
-export class WebPanelComponent implements OnInit, ControlValueAccessor {
+export class WebPanelComponent implements OnInit {
 
 
   @Output() emitterPanel: EventEmitter<string> = new EventEmitter();
@@ -25,8 +20,8 @@ export class WebPanelComponent implements OnInit, ControlValueAccessor {
   public nLang = 1;
 
   public label = {
-    pages: '',
-    lang: ''
+    pages: this.webProduct.extras[0].label,
+    lang: this.webProduct.extras[1].label
   };
   public modal = {
     pages: '',
@@ -40,15 +35,6 @@ export class WebPanelComponent implements OnInit, ControlValueAccessor {
   constructor(private productService: ProductService) {
 
   }
-  writeValue(obj: any): void {
-    throw new Error('Method not implemented.');
-  }
-  registerOnChange(fn: any): void {
-    throw new Error('Method not implemented.');
-  }
-  registerOnTouched(fn: any): void {
-    throw new Error('Method not implemented.');
-  }
 
   ngOnInit(): void {
     this.productService.getProducts()
@@ -56,8 +42,8 @@ export class WebPanelComponent implements OnInit, ControlValueAccessor {
         p.find(web => web.prodName === 'web')
         this.webProduct = p[0];
         this.label = {
-          pages: this.webProduct.extras[0].nameXtra,
-          lang: this.webProduct.extras[1].nameXtra,
+          pages: this.webProduct.extras[0].label,
+          lang: this.webProduct.extras[1].label,
         };
         this.modal = {
           pages: this.webProduct.extras[0].modal,
