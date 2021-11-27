@@ -1,3 +1,4 @@
+import { FormControl } from '@angular/forms';
 import { ProductService } from './../../services/product.service';
 import { Product } from './../../interfaces/product';
 import { Component, OnInit } from '@angular/core';
@@ -9,6 +10,8 @@ import { Extra } from 'src/app/interfaces/extra';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
+  public form = new FormControl('');
 
   public products: Product[] = [];
   public webExtras: Extra[] = [];
@@ -33,7 +36,7 @@ export class HomeComponent implements OnInit {
   }
   /** funcion similar a la anterior pero que trae los extras del producto web*/
   getWebExtras(): void {
-    this.productService.getExtras()
+    this.productService.getWebExtras()
       .subscribe(e => this.webExtras = e);
   }
   getOrderPrice():void{
@@ -41,8 +44,8 @@ export class HomeComponent implements OnInit {
   }
 
   addOrder(){
-    console.log(this.productService.getOrder());
-    this.productService.addOrder();
+    this.productService.addOrder(this.customerName);
+    this.form.reset();
   }
 
 }

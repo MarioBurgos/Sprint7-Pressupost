@@ -19,7 +19,8 @@ export class MyCheckboxComponent implements OnInit {
   }
 
   toggleCheck():void{
-    this.productService.addProduct(this.product);
+    this.product.isChecked = !this.product.isChecked;this.productService.addProduct(this.product);
+    this.product.isChecked ? this.productService.addProduct(this.product) : this.productService.removeProduct(this.product);
   }
 
 

@@ -25,13 +25,11 @@ export class ProductService {
     }
   }
 
-
-
   //devuelve una promesa/observable de todos los productos de la BD en un Array de Product
   getProducts(): Observable<Product[]> {
     return of(PRODUCTS!);
   }
-  getExtras(): Observable<Extra[]>{
+  getWebExtras(): Observable<Extra[]>{
     return of(EXTRAS_WEB!);
   }
   getOrder(): Order {
@@ -44,22 +42,35 @@ export class ProductService {
     return this.order.custName;
   }
 
-  setCustomerName(cName: string){
-    this.order.custName = cName;
-  }
 
   /**
    * metodos que actuan sobre los datos del pedido
    */
+  resetOrder(){
+    this.order = {
+      custName: "",
+      products: [],
+      totalPrice: 0,
+    }
+  }
   addProduct(product: Product){
     this.order.products.push(product);
+    this.order.totalPrice += product.price;
+  }
+  removeProduct(product: Product){
+    this.order.products = this.order.products.filter( p => p !== product);
+    this.order.totalPrice -= product.price;
+
   }
 
 
   //graba un presupuesto, devuelve true si se ha añadido, false en caso contrario
-  addOrder(): boolean {
+  addOrder(customerName: string): boolean {
     try {
+      this.order.custName = customerName;
       this.allOrders.push(this.order);
+      this.resetOrder();
+      console.log(this.allOrders);
       return true;
     } catch (error) {
       return false;

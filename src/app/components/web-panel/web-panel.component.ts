@@ -1,7 +1,6 @@
 import { ProductService } from './../../services/product.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Product } from 'src/app/interfaces/product';
-import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Extra } from 'src/app/interfaces/extra';
 
 @Component({
   selector: 'app-web-panel',
@@ -15,42 +14,17 @@ export class WebPanelComponent implements OnInit {
 
   @Output() emitterPanel: EventEmitter<string> = new EventEmitter();
 
-  public webProduct!: Product;
+public webExtras: Extra[] = [];
   public nPages = 1;
   public nLang = 1;
-
-  public label = {
-    pages: this.webProduct.extras[0].label,
-    lang: this.webProduct.extras[1].label
-  };
-  public modal = {
-    pages: '',
-    lang: ''
-  }
-
-  myGroup = new FormGroup({
-    formPanel: new FormControl()
-  });
 
   constructor(private productService: ProductService) {
 
   }
 
   ngOnInit(): void {
-    this.productService.getProducts()
-      .subscribe(p => {
-        p.find(web => web.prodName === 'web')
-        this.webProduct = p[0];
-        this.label = {
-          pages: this.webProduct.extras[0].label,
-          lang: this.webProduct.extras[1].label,
-        };
-        this.modal = {
-          pages: this.webProduct.extras[0].modal,
-          lang: this.webProduct.extras[1].modal,
-        }
-      });
-
+    this.productService.getWebExtras()
+      .subscribe(extras => this.webExtras = extras);
   }
 
   getNPages(evt: string){
