@@ -1,3 +1,4 @@
+import { OrderService } from './services/order.service';
 import { ProductService } from './services/product.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -26,7 +27,9 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [ ProductService ],
+  providers: [
+    ProductService,
+    OrderService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-import { ProductService } from './../../../services/product.service';
+import { OrderService } from './../../../services/order.service';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -12,15 +12,15 @@ export class MyCheckboxComponent implements OnInit {
 
   @Input() public product: any;
 
-  constructor(private productService: ProductService) {
+  constructor(private orderService: OrderService) {
   }
 
   ngOnInit(): void {
   }
 
   toggleCheck():void{
-    this.product.isChecked = !this.product.isChecked;this.productService.addProduct(this.product);
-    this.product.isChecked ? this.productService.addProduct(this.product) : this.productService.removeProduct(this.product);
+    this.product.isChecked = !this.product.isChecked;
+    this.product.isChecked ? this.orderService.addProduct(this.product) : this.orderService.removeProduct(this.product);
   }
 
 

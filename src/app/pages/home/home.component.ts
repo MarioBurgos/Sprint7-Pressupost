@@ -1,3 +1,4 @@
+import { OrderService } from './../../services/order.service';
 import { FormControl } from '@angular/forms';
 import { ProductService } from './../../services/product.service';
 import { Product } from './../../interfaces/product';
@@ -19,7 +20,8 @@ export class HomeComponent implements OnInit {
   public orderPrice = 0;
 
   constructor(
-    private productService: ProductService,
+    private productService: ProductService, // gestiona los productos
+    private orderService: OrderService, // gestiona los pedidos
   ) {
   }
 
@@ -40,11 +42,11 @@ export class HomeComponent implements OnInit {
       .subscribe(e => this.webExtras = e);
   }
   getOrderPrice():void{
-    this.orderPrice = this.productService.getOrder().totalPrice;
+    this.orderPrice = this.orderService.getOrder().totalPrice;
   }
 
-  addOrder(){
-    this.productService.addOrder(this.customerName);
+  saveOrder(){
+    this.orderService.saveOrder(this.customerName);
     this.form.reset();
   }
 

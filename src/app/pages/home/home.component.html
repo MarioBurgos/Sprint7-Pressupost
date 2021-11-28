@@ -1,6 +1,5 @@
-<div class="container title">
-    <h2>¿Qué quieres hacer?</h2>
-</div>
+<h2>¿Qué quieres hacer?</h2>
+
 <form class="container check" [formControl]="form" ngDefaultControl (change)="getOrderPrice()">
     <div *ngFor="let p of products">
         <app-my-checkbox [product]="p"></app-my-checkbox>
@@ -8,22 +7,20 @@
             <app-web-panel></app-web-panel>
         </div>
     </div>
+    <p>Precio: {{ [(orderPrice | currency: 'EUR')] }}</p>
 </form>
-<div class="container">
-    <p>Precio: {{ [(orderPrice)] }}</p>
-</div>
-<div class="container w-50 me-auto">
+
+<div class="container ms-auto w-50">
     <div class="input-group mb-2">
         <input type="text" [(ngModel)]="customerName" class="form-control" placeholder="Nombre">
         <div class="input-group-prepend">
             <div class="input-group-text">
-                <div class="btn btn-outline" (click)="addOrder()">Enviar</div>
+                <div class="btn btn-outline" (click)="saveOrder()">Enviar</div>
             </div>
         </div>
     </div>
 </div>
 
-
-<div class="pt-2 text-center">
+<div class="pt-5 text-center">
     <button class="mb-5" [routerLink]="['/dashboard']">Atrás</button>
 </div>
