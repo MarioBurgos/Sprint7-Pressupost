@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MyCheckboxComponent } from './components/shared/my-checkbox/my-checkbox.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { WebPanelComponent } from './components/web-panel/web-panel.component';
+import { ExtrasPanelComponent } from './components/extras-panel/extras-panel.component';
 import { MyInputWButtonsComponent } from './components/shared/my-input-w-buttons/my-input-w-buttons.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
@@ -17,7 +17,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     AppComponent,
     HomeComponent,
     MyCheckboxComponent,
-    WebPanelComponent,
+    ExtrasPanelComponent,
     MyInputWButtonsComponent,
     DashboardComponent,
   ],

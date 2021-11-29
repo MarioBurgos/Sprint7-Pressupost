@@ -3,8 +3,8 @@
 <form class="container check" [formControl]="form" ngDefaultControl (change)="getOrderPrice()">
     <div *ngFor="let p of products">
         <app-my-checkbox [product]="p"></app-my-checkbox>
-        <div *ngIf="p.isChecked && p.prodName === 'web'">
-            <app-web-panel></app-web-panel>
+        <div *ngIf="p.isChecked && p.extras.length >=1">
+            <app-extras-panel [inputExtras]="p.extras"></app-extras-panel>
         </div>
     </div>
     <p>Precio: {{ [(orderPrice | currency: 'EUR')] }}</p>

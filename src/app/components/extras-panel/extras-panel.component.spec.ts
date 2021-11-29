@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WebPanelComponent } from './web-panel.component';
+import { ExtrasPanelComponent } from './extras-panel.component';
 
 describe('WebPanelComponent', () => {
-  let component: WebPanelComponent;
-  let fixture: ComponentFixture<WebPanelComponent>;
+  let component: ExtrasPanelComponent;
+  let fixture: ComponentFixture<ExtrasPanelComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ WebPanelComponent ]
+      declarations: [ ExtrasPanelComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WebPanelComponent);
+    fixture = TestBed.createComponent(ExtrasPanelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

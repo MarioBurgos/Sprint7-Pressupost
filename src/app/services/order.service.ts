@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Extra } from '../interfaces/extra';
 import { Order } from '../interfaces/order';
 import { Product } from '../interfaces/product';
 
@@ -37,6 +38,11 @@ export class OrderService {
       totalPrice: 0,
     }
   }
+
+  addExtra(extra:Extra, product: Product){
+
+  }
+
   addProduct(product: Product){
     this.order.products.push(product);
     this.order.totalPrice += product.price;
@@ -44,8 +50,9 @@ export class OrderService {
   removeProduct(product: Product){
     this.order.products = this.order.products.filter( p => p !== product);
     this.order.totalPrice -= product.price;
-
   }
+
+
    //graba un presupuesto, devuelve true si se ha añadido, false en caso contrario
    saveOrder(customerName: string): boolean {
     try {

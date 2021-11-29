@@ -28,18 +28,13 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     //obtener los datos de los mocks mediante servicio
     this.getProducts();
-    this.getWebExtras();
   }
 
-  /**funcion que llama a un servicio que trae los productos del mock*/
+  /**funcion que llama al servicio que trae los productos montados con sus extras*/
   getProducts(): void {
-    this.productService.getProducts()
-      .subscribe(p => this.products = p);
-  }
-  /** funcion similar a la anterior pero que trae los extras del producto web*/
-  getWebExtras(): void {
-    this.productService.getWebExtras()
-      .subscribe(e => this.webExtras = e);
+    this.products = this.productService.getProducts();
+    console.log("HomeComponent");
+    console.log(this.products);
   }
   getOrderPrice():void{
     this.orderPrice = this.orderService.getOrder().totalPrice;
