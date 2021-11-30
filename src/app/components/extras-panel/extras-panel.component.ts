@@ -9,20 +9,12 @@ import { Extra } from 'src/app/interfaces/extra';
 })
 export class ExtrasPanelComponent implements OnInit {
 
-  @Output() emitterPanel: EventEmitter<string> = new EventEmitter();
   @Input() inputExtras!: Extra [];
-
-  public amount = 1;
 
   constructor() { }
 
   ngOnInit(): void {
 
   }
-
-  // setQuantity(evt: string) {
-  //   this.inputExtra.quantity = Number(evt);
-  //   console.log("Panel:// NPages: " + this.inputExtra.quantity)
-  // }
 
 }

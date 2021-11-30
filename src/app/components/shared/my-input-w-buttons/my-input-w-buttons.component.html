@@ -1,7 +1,7 @@
 <div class="input-w-buttons w-auto justify-content-end">
     <label for="input">{{inputExtra.label | titlecase }}</label>
     <button (click)="decreaseValue()">-</button>
-    <input [(ngModel)]="value" type="text" name="input" (change)="emitValue()" />
+    <input [(ngModel)]="inputExtra.quantity" type="text" name="input" (change)="getQuantity()" />
     <button (click)="increaseValue()">+</button>
     <a class="icon" (click)="onClickInfo()">
         <!-- bs-icons:  information circle -->

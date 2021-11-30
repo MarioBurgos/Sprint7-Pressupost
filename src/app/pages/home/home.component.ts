@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
     console.log(this.products);
   }
   getOrderPrice():void{
-    this.orderPrice = this.orderService.getOrder().totalPrice;
+    this.orderPrice = this.orderService.calcOrderPrice();
   }
 
   saveOrder(){

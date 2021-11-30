@@ -39,10 +39,6 @@ export class OrderService {
     }
   }
 
-  addExtra(extra:Extra, product: Product){
-
-  }
-
   addProduct(product: Product){
     this.order.products.push(product);
     this.order.totalPrice += product.price;
@@ -50,6 +46,28 @@ export class OrderService {
   removeProduct(product: Product){
     this.order.products = this.order.products.filter( p => p !== product);
     this.order.totalPrice -= product.price;
+  }
+
+  //Calcula el precio total de los extras WEB
+  // (nPages * nLanguages * 30)
+  calcExtrasPrice(product: Product): number{
+    let extrasPrice = 0;
+    let pile = 1;
+    product.extras.forEach(extra => {
+      pile *= extra.quantity;
+    });
+    extrasPrice = pile*30;
+    return extrasPrice;
+  }
+  //Calcula el precio total del pedido
+  // (Product Price + Extras)
+  calcOrderPrice(): number{
+    let orderPrice = this.order.products.reduce((pile, product) => {
+      let extrasPrice = this.calcExtrasPrice(product);
+      extrasPrice === 30 ? extrasPrice = 0 : extrasPrice; //controla que no se sume el precio si no hay más de 1 página/idioma
+      return pile + product.price + extrasPrice;
+    }, 0);
+    return orderPrice;
   }
 
 

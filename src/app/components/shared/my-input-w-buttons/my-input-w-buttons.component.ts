@@ -1,6 +1,6 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Extra } from './../../../interfaces/extra';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { OrderService } from './../../../services/order.service';
 
 @Component({
   selector: 'app-my-input-w-buttons',
@@ -9,35 +9,26 @@ import { OrderService } from './../../../services/order.service';
 })
 export class MyInputWButtonsComponent implements OnInit {
 
-  @Input() public inputExtra: any;
-  @Output() emitterInputWButtons = new EventEmitter<any>();
-
-  public inputLabel: any;
-  public inputModal: any;
-  public value: number = 1;
+  @Input() public inputExtra!: Extra;
 
   constructor(
-    private orderService:OrderService,
-    private modal: NgbModal) { }
+    private modal: NgbModal,
+    ) { }
 
   ngOnInit(): void {
   }
 
-  emitValue() {
-    // console.log("InputWButtons:// EmitValue: " + this.value)
-    this.emitterInputWButtons.emit(String(this.value));
+  getQuantity():number{
+    return this.inputExtra.quantity;
   }
-
   increaseValue() {
-    this.value++;
-    console.log("InputWButtons:// IncreaseValue: " + this.value)
-    this.emitValue();
+    this.inputExtra.quantity++;
+    console.log("InputWButtons:// IncreaseValue: " + this.inputExtra.quantity)
   }
 
   decreaseValue() {
-    this.value === 1 ? this.value : this.value--;
-    console.log("InputWButtons:// DecreaseValue: " + this.value)
-    this.emitValue();
+    this.inputExtra.quantity <= 1 ? this.inputExtra.quantity : this.inputExtra.quantity--;
+    console.log("InputWButtons:// DecreaseValue: " + this.inputExtra.quantity)
   }
 
   onClickInfo() {
