@@ -1,0 +1,18 @@
+<ng-container *ngFor="let order of allOrders">
+    <ol class="card py-1 pe-2">
+        <h6>{{ order.id }}</h6>
+        <h6>{{ order.custName }}</h6>
+        <hr>
+        <div *ngFor="let product of order.products">
+            <li><strong>{{ product.label }}</strong></li>
+            <p></p>
+            <ul *ngFor="let extra of product.extras">
+                <li><i>{{ extra.label }}:</i> {{ extra.quantity}}</li>
+            </ul>
+
+        </div>
+
+
+    </ol>
+
+</ng-container>

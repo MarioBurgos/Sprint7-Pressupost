@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Extra } from '../interfaces/extra';
 import { Order } from '../interfaces/order';
 import { Product } from '../interfaces/product';
 
@@ -13,6 +12,7 @@ export class OrderService {
 
   constructor() {
     this.order = {
+      id: "",
       custName: "",
       products: [],
       totalPrice : 0
@@ -33,6 +33,7 @@ export class OrderService {
   //reinicia los valores del pedido
   resetOrder(){
     this.order = {
+      id: "",
       custName: "",
       products: [],
       totalPrice: 0,
@@ -74,7 +75,9 @@ export class OrderService {
    //graba un presupuesto, devuelve true si se ha añadido, false en caso contrario
    saveOrder(customerName: string): boolean {
     try {
+      this.order.id = String(Math.floor(Math.random()*10000)); //de momento genera un id random
       this.order.custName = customerName;
+      this.order.totalPrice = this.calcOrderPrice();
       this.allOrders.push(this.order);
       this.resetOrder();
       console.log(this.allOrders);

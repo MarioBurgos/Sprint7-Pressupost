@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ExtrasPanelComponent } from './components/extras-panel/extras-panel.component';
 import { MyInputWButtonsComponent } from './components/shared/my-input-w-buttons/my-input-w-buttons.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { OrderListComponent } from './components/order-list/order-list.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     ExtrasPanelComponent,
     MyInputWButtonsComponent,
     DashboardComponent,
+    OrderListComponent,
   ],
   imports: [
     BrowserModule,
