@@ -1,18 +1,24 @@
 <ng-container *ngFor="let order of allOrders">
-    <ol class="card py-1 pe-2">
-        <h6>{{ order.id }}</h6>
-        <h6>{{ order.custName }}</h6>
-        <hr>
-        <div *ngFor="let product of order.products">
-            <li><strong>{{ product.label }}</strong></li>
-            <p></p>
-            <ul *ngFor="let extra of product.extras">
-                <li><i>{{ extra.label }}:</i> {{ extra.quantity}}</li>
-            </ul>
+    <div class="accordion" id="accordion">
+        <div class="accordion-item">
+            <h4 class="accordion-header" id="heading">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse" aria-expanded="true" aria-controls="collapseOne">
+                  <h5>Order nº: {{ order.id }}<br>{{ order.custName }}</h5>
+                </button>
+            </h4>
 
+            <div id="collapse" class="accordion-collapse collapse p-3" aria-labelledby="heading" data-bs-parent="#accordion">
+                <div class="accordion-body">
+                    <ul *ngFor="let product of order.products">
+                        <li><strong>{{ product.label }}</strong></li>
+                        <ul *ngFor="let extra of product.extras">
+                            <li><i>{{ extra.label }}:</i> {{ extra.quantity}}</li>
+                        </ul>
+                    </ul>
+                    <h6 class="float-end">{{ order.totalPrice }}€</h6>
+                </div>
+            </div>
         </div>
-
-
-    </ol>
+    </div>
 
 </ng-container>

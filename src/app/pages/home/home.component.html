@@ -3,7 +3,7 @@
         <div class="col-7">
             <h2>¿Qué quieres hacer?</h2>
 
-            <form class="container check" [formControl]="form" ngDefaultControl (change)="getOrderPrice()">
+            <form class="container check" [formGroup]="form" ngDefaultControl (change)="getOrderPrice()">
                 <div *ngFor="let p of products">
                     <app-my-checkbox [product]="p"></app-my-checkbox>
                     <div *ngIf="p.isChecked && p.extras.length >1">
@@ -24,7 +24,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-5 ps-5">
+        <div class="col-5">
             <app-order-list></app-order-list>
         </div>
     </div>
@@ -32,3 +32,5 @@
 <div class="text-center">
     <button class="mb-5" [routerLink]="['/dashboard']">Atrás</button>
 </div>
+
+<div>form: {{ form }} </div>

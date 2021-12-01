@@ -30,7 +30,7 @@ export class OrderService {
     return this.order.custName;
   }
 
-  //reinicia los valores del pedido
+  // Método que reinicia los valores del pedido
   resetOrder(){
     this.order = {
       id: "",
@@ -40,6 +40,7 @@ export class OrderService {
     }
   }
 
+  // Este añade el producto a la lista
   addProduct(product: Product){
     this.order.products.push(product);
     this.order.totalPrice += product.price;

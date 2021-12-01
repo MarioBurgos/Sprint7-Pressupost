@@ -1,5 +1,5 @@
 import { OrderService } from './../../services/order.service';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ProductService } from './../../services/product.service';
 import { Product } from './../../interfaces/product';
 import { Component, OnInit } from '@angular/core';
@@ -10,9 +10,12 @@ import { Extra } from 'src/app/interfaces/extra';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit  {
 
-  public form = new FormControl('');
+  public form = new FormGroup(
+    { productCheckbox: new FormControl(''),
+    extrasPanel: new FormControl('')}
+  );
 
   public products: Product[] = [];
   public webExtras: Extra[] = [];
@@ -37,12 +40,13 @@ export class HomeComponent implements OnInit {
     console.log(this.products);
   }
   getOrderPrice():void{
-    this.orderPrice = this.orderService.calcOrderPrice();
+    this.orderPrice = this.orderService.getOrder().totalPrice;
   }
 
   saveOrder(){
     this.orderService.saveOrder(this.customerName);
     this.form.reset();
+
   }
 
 }
