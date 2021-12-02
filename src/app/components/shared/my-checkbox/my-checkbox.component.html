@@ -1,2 +1,4 @@
-<div></div>
-<label for="{{product.name}}"><input type="checkbox" name="{{product.name}}" (change)="toggleCheck();"/>{{product.label}} ({{product.price | currency: 'EUR'}})</label>
+<input type="checkbox" name="{{product.name}}" (change)="toggleCheck();" />
+<label for="{{product.name}}">
+   {{product.label}} ({{product.price | currency: 'EUR'}})
+</label>

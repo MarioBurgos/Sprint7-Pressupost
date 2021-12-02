@@ -14,8 +14,12 @@ export class HomeComponent implements OnInit {
 
   public form = new FormGroup(
     {
-      productCheckbox: new FormControl(''),
-      extrasPanel: new FormControl('')
+      fcProduct: new FormControl(''),
+      fgExtras: new FormGroup({
+        fcPages: new FormControl(''),
+        fcLanguages: new FormControl('')
+      }),
+      fcCustomerName: new FormControl('')
     }
   );
 
@@ -35,6 +39,10 @@ export class HomeComponent implements OnInit {
     this.getProducts();
   }
 
+  onSubmit(){
+    console.warn(this.form.value);
+  }
+
   /**funcion que llama al servicio que trae los productos montados con sus extras*/
   getProducts(): void {
     this.products = this.productService.getProducts();
@@ -46,6 +54,7 @@ export class HomeComponent implements OnInit {
   }
 
   saveOrder() {
+    this.onSubmit();
     this.orderService.saveOrder(this.customerName);
     this.form.reset();
 

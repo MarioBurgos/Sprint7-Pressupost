@@ -11,9 +11,10 @@ export class TestFormComponent implements OnInit {
   fgInfo = new FormGroup({
     fcName : new FormControl(''),
     fcLastName: new FormControl(''),
+    fcCheck: new FormControl(),
     fgAddress: new FormGroup({
       fcStreet: new FormControl(''),
-      fcCity: new FormControl('')
+      fcCity: new FormControl(''),
     }),
 
   });

@@ -5,24 +5,27 @@
 
             <form class="container check" [formGroup]="form" ngDefaultControl (change)="getOrderPrice()">
                 <div *ngFor="let p of products">
-                    <app-my-checkbox [product]="p"></app-my-checkbox>
-                    <div *ngIf="p.isChecked && p.extras.length >1">
-                        <app-extras-panel [inputExtras]="p.extras"></app-extras-panel>
+                    <app-my-checkbox [product]="p" ngDefaultControl formControlName="'fcProduct'+{{p.prodName}}"></app-my-checkbox>
+                    <div *ngIf="p.isChecked && p.extras.length >0">
+                        <!-- si está check y si tiene un extra o más -->
+                        <app-extras-panel [inputExtras]="p.extras" ngDefaultControl formGroupName="fgExtras"></app-extras-panel>
                     </div>
                 </div>
                 <p>Precio: {{ [(orderPrice | currency: 'EUR')] }}</p>
-            </form>
-
-            <div class="container ms-auto">
-                <div class="input-group">
-                    <input type="text" [(ngModel)]="customerName" class="form-control" placeholder="Nombre">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <div class="btn btn-outline" (click)="saveOrder()">Enviar</div>
+                <!-- input para nombre y botón submit -->
+                <div class="container ms-auto">
+                    <div class="input-group">
+                        <input type="text" ngDefaultControl [(ngModel)]="customerName" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Nombre">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">
+                                <div class="btn btn-outline" (click)="saveOrder()">Enviar</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
+
+
         </div>
         <div class="col-5">
             <app-order-list></app-order-list>
