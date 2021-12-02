@@ -10,11 +10,13 @@ import { Extra } from 'src/app/interfaces/extra';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit  {
+export class HomeComponent implements OnInit {
 
   public form = new FormGroup(
-    { productCheckbox: new FormControl(''),
-    extrasPanel: new FormControl('')}
+    {
+      productCheckbox: new FormControl(''),
+      extrasPanel: new FormControl('')
+    }
   );
 
   public products: Product[] = [];
@@ -39,11 +41,11 @@ export class HomeComponent implements OnInit  {
     console.log("HomeComponent");
     console.log(this.products);
   }
-  getOrderPrice():void{
+  getOrderPrice(): void {
     this.orderPrice = this.orderService.getOrder().totalPrice;
   }
 
-  saveOrder(){
+  saveOrder() {
     this.orderService.saveOrder(this.customerName);
     this.form.reset();
 

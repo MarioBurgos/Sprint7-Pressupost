@@ -12,6 +12,7 @@ import { ExtrasPanelComponent } from './components/extras-panel/extras-panel.com
 import { MyInputWButtonsComponent } from './components/shared/my-input-w-buttons/my-input-w-buttons.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { OrderListComponent } from './components/order-list/order-list.component';
+import { TestFormComponent } from './pages/test-form/test-form.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { OrderListComponent } from './components/order-list/order-list.component
     MyInputWButtonsComponent,
     DashboardComponent,
     OrderListComponent,
+    TestFormComponent,
   ],
   imports: [
     BrowserModule,
