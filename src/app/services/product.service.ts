@@ -53,7 +53,7 @@ export class ProductService {
 
     //busca los extras de cada producto (ahora solo hay web, pero es facilmente escalable añadiendo otros listados de extras y nuevos métodos para traer sus promesas), y los pushea al array de extras del producto pertinente.
     try {
-      let webProduct = products.find(p => p.prodName = 'web');
+      let webProduct = products.find(p => p.prodName === 'web');
       webExtras.forEach(we => {
         webProduct?.extras.push(we);
       });
@@ -61,7 +61,7 @@ export class ProductService {
       console.error("No extras for WEB");
     }
     try {
-      let seoProduct = products.find(p => p.prodName = 'seo');
+      let seoProduct = products.find(p => p.prodName === 'seo');
       seoExtras.forEach(se => {
         seoProduct?.extras.push(se);
       });
@@ -69,7 +69,7 @@ export class ProductService {
       console.error("No extras for SEO");
     }
     try {
-      let adsProduct = products.find(p => p.prodName = 'ads');
+      let adsProduct = products.find(p => p.prodName === 'ads');
       adsExtras.forEach(ae => {
         adsProduct?.extras.push(ae);
       });

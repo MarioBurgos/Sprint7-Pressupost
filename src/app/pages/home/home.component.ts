@@ -24,7 +24,6 @@ export class HomeComponent implements OnInit {
   );
 
   public products: Product[] = [];
-  public webExtras: Extra[] = [];
   public customerName: string = "";
   public orderPrice = 0;
 
