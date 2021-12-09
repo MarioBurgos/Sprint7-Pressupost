@@ -10,7 +10,7 @@ import { AbstractControl, FormGroup, NgControl } from '@angular/forms';
 })
 export class ExtrasPanelComponent implements OnInit, AfterViewInit {
 
-  @Input() inputExtras!: Extra [];
+  @Input() inputExtras!: Extra[];
   @Input() formGroup!: FormGroup;
 
 
@@ -30,5 +30,5 @@ export class ExtrasPanelComponent implements OnInit, AfterViewInit {
     } else {
       // Component is missing form control binding
     }
-}
+  }
 }

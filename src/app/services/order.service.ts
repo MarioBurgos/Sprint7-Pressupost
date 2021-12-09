@@ -1,3 +1,4 @@
+import { OrderModel } from './../model/order.model';
 import { Injectable } from '@angular/core';
 import { Order } from '../interfaces/order';
 import { Product } from '../interfaces/product';
@@ -11,12 +12,7 @@ export class OrderService {
   private order: Order;
 
   constructor() {
-    this.order = {
-      id: "",
-      custName: "",
-      products: [],
-      totalPrice : 0
-    }
+    this.order = new OrderModel('','', new Array<Product>(), 0);
    }
 
   //getters y setters
@@ -32,22 +28,17 @@ export class OrderService {
 
   // Método que reinicia los valores del pedido
   resetOrder(){
-    this.order = {
-      id: "",
-      custName: "",
-      products: [],
-      totalPrice: 0,
-    }
+    this.order = new OrderModel('','', new Array<Product>(), 0);
   }
 
   // Este añade el producto a la lista
   addProduct(product: Product){
     this.order.products.push(product);
-    this.order.totalPrice += product.price;
+    this.order.totalPrice = this.calcOrderPrice();
   }
   removeProduct(product: Product){
     this.order.products = this.order.products.filter( p => p !== product);
-    this.order.totalPrice -= product.price;
+    this.order.totalPrice -= this.calcOrderPrice();
   }
 
   //Calcula el precio total de los extras WEB

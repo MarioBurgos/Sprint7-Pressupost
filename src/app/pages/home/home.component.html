@@ -5,7 +5,7 @@
 
             <form class="container check" [formGroup]="form" ngDefaultControl (change)="getOrderPrice()">
                 <div *ngFor="let p of products">
-                    <app-my-checkbox [product]="p" ngDefaultControl formControlName="'fcProduct'+{{p.prodName}}"></app-my-checkbox>
+                    <app-my-checkbox [product]="p" ngDefaultControl formControlName="fcProduct"></app-my-checkbox>
                     <div *ngIf="p.isChecked && p.extras.length >0">
                         <!-- si está check y si tiene un extra o más -->
                         <app-extras-panel [inputExtras]="p.extras" ngDefaultControl [formGroup]="form.get('fgExtras')?.value"></app-extras-panel>
