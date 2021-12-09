@@ -5,8 +5,7 @@ import { Component, Input, OnInit } from '@angular/core';
   selector: 'app-my-checkbox',
   templateUrl: './my-checkbox.component.html',
   styleUrls: ['./my-checkbox.component.scss'],
-  providers: [
-  ]
+
 })
 export class MyCheckboxComponent implements OnInit {
 
