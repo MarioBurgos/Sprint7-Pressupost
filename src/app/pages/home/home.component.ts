@@ -3,12 +3,12 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ProductService } from './../../services/product.service';
 import { Product } from './../../interfaces/product';
 import { Component, OnInit } from '@angular/core';
-import { Extra } from 'src/app/interfaces/extra';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+
 })
 export class HomeComponent implements OnInit {
 
@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
   );
 
   public products: Product[] = [];
-  public customerName: string = "";
+  public customerName!: string;
   public orderPrice = 0;
 
   constructor(
@@ -50,7 +50,7 @@ export class HomeComponent implements OnInit {
 
   saveOrder() {
     this.orderService.saveOrder(this.customerName);
-    this.form.reset();
+    // this.form.reset();
 
   }
 

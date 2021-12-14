@@ -11,11 +11,10 @@
                         <app-extras-panel [inputExtras]="p.extras" ngDefaultControl [formGroup]="form.get('fgExtras')?.value"></app-extras-panel>
                     </div>
                 </div>
-                <p>Precio: {{ [(orderPrice | currency: 'EUR')] }}</p>
                 <!-- input para nombre y botón submit -->
                 <div class="container ms-auto">
                     <div class="input-group">
-                        <input type="text" ngDefaultControl [(ngModel)]="customerName" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Nombre">
+                        <input type="text" [(ngModel)]="customerName" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Nombre">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
                                 <div class="btn btn-outline" (click)="saveOrder()">Enviar</div>
@@ -24,7 +23,7 @@
                     </div>
                 </div>
             </form>
-
+            <p>Precio: {{ [(orderPrice | currency: 'EUR')] }}</p>
 
         </div>
         <div class="col-5">

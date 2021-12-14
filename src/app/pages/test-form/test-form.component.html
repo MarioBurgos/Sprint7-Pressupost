@@ -3,21 +3,13 @@
     <input type="text" formControlName="fcName">
     <br>
     <label for="last-name">Last Name: </label>
-    <input type="text" formControlName="fcLastName">
+    <input type="text" formControlName="fcEmail">
     <br>
     <label for="check">Adult: </label>
     <input type="checkbox" formControlName="fcCheck">
     <br>
-
-    <div formGroupName="fgAddress">
-        <label for="street">Street: </label>
-        <input id="street" type="text" formControlName="fcStreet">
-        <br>
-        <label for="city">City: </label>
-        <input type="text" formControlName="fcCity">
-    </div>
-
+    <ng-container *ngIf="fgInfo.value.fcCheck === true">asdf</ng-container>
 
     <p>Complete the form to enable button.</p>
-    <input class="btn btn-success" type="submit" [disabled]="!fgInfo.valid" value="submit" />
+    <input class=" btn btn-success " type="submit " [disabled]="!fgInfo.valid " value="submit " />
 </form>

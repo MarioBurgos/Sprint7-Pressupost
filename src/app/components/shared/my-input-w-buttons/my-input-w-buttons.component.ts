@@ -1,3 +1,4 @@
+import { OrderService } from './../../../services/order.service';
 import { Extra } from './../../../interfaces/extra';
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -10,8 +11,10 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class MyInputWButtonsComponent implements OnInit {
 
   @Input() public inputExtra!: Extra;
+  public quantity: number = 1;
 
   constructor(
+    private orderService: OrderService,
     private modal: NgbModal,
     ) { }
 
@@ -19,16 +22,18 @@ export class MyInputWButtonsComponent implements OnInit {
   }
 
   getQuantity():number{
-    return this.inputExtra.quantity;
+    return this.quantity;
   }
   increaseValue() {
-    this.inputExtra.quantity++;
-    console.log("InputWButtons:// IncreaseValue: " + this.inputExtra.quantity)
+    // let order: any = this.orderService.getOrder();
+    this.quantity++;
+    // order.getExtra(this.inputExtra, this.quantity);
+    // console.log("InputWButtons:// IncreaseValue: " + this.inputExtra.quantity)
   }
 
   decreaseValue() {
-    this.inputExtra.quantity <= 1 ? this.inputExtra.quantity : this.inputExtra.quantity--;
-    console.log("InputWButtons:// DecreaseValue: " + this.inputExtra.quantity)
+    this.quantity <= 1 ? this.quantity : this.quantity--;
+    // console.log("InputWButtons:// DecreaseValue: " + this.inputExtra.quantity)
   }
 
   onClickInfo() {

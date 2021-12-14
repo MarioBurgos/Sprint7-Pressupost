@@ -2,6 +2,7 @@ import { OrderModel } from './../model/order.model';
 import { Injectable } from '@angular/core';
 import { Order } from '../interfaces/order';
 import { Product } from '../interfaces/product';
+import { Extra } from '../interfaces/extra';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,13 @@ export class OrderService {
     return this.order.custName;
   }
 
+  setExtrasQuantity(extra: Extra, quantity: number){
+    let pExtra = this.order.products.find( p => {
+      return p.extras.find(e => e == extra);
+    });
+    pExtra?.extras.map ( ext => ext.quantity = quantity);
+  }
+
   // Método que reinicia los valores del pedido
   resetOrder(){
     this.order = new OrderModel('','', new Array<Product>(), 0);
@@ -38,7 +46,7 @@ export class OrderService {
   }
   removeProduct(product: Product){
     this.order.products = this.order.products.filter( p => p !== product);
-    this.order.totalPrice -= this.calcOrderPrice();
+    this.order.totalPrice = this.calcOrderPrice();
   }
 
   //Calcula el precio total de los extras WEB

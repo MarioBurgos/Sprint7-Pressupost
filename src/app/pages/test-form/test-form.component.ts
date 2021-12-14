@@ -1,4 +1,4 @@
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,24 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestFormComponent implements OnInit {
 
-  fgInfo = new FormGroup({
-    fcName : new FormControl(''),
-    fcLastName: new FormControl(''),
-    fcCheck: new FormControl(),
-    fgAddress: new FormGroup({
-      fcStreet: new FormControl(''),
-      fcCity: new FormControl(''),
-    }),
+  fgInfo: FormGroup;
 
-  });
-
-  constructor() { }
+  constructor(private _fb: FormBuilder) {
+    this.fgInfo = this._fb.group({
+      fcName: ['', Validators.required],
+      fcEmail: ['', Validators.compose([Validators.email, Validators.required])],
+      fcCheck: [],
+    })
+  }
 
   ngOnInit(): void {
   }
 
-  onSubmitForm(){
+  onSubmitForm() {
     console.log(this.fgInfo.value);
     this.fgInfo.reset();
+    console.log(this.fgInfo);
   }
+
 }
