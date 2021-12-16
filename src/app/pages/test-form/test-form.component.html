@@ -8,7 +8,9 @@
     <label for="check">Adult: </label>
     <input type="checkbox" formControlName="fcCheck">
     <br>
-    <ng-container *ngIf="fgInfo.value.fcCheck === true">asdf</ng-container>
+    <ng-container *ngIf="fgInfo.value.fcCheck === true">
+        <app-extras-panel [inputExtras]="EXTRAS_WEB" [parentForm]="fgInfo.get('fgExtras')"></app-extras-panel>
+    </ng-container>
 
     <p>Complete the form to enable button.</p>
     <input class=" btn btn-success " type="submit " [disabled]="!fgInfo.valid " value="submit " />

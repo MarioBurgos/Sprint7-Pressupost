@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MyCheckboxComponent } from './components/shared/my-checkbox/my-checkbox.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, NgControl, FormControl } from '@angular/forms';
 import { ExtrasPanelComponent } from './components/extras-panel/extras-panel.component';
 import { MyInputWButtonsComponent } from './components/shared/my-input-w-buttons/my-input-w-buttons.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -29,11 +29,17 @@ import { TestFormComponent } from './pages/test-form/test-form.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
+
+  ],
+  exports:[
+    FormsModule,
     ReactiveFormsModule
   ],
   providers: [
     ProductService,
-    OrderService],
+    OrderService,
+    FormControl],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

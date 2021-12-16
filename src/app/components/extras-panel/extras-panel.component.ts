@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, EventEmitter, Injector, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, Injector, Input, OnInit } from '@angular/core';
 import { Extra } from 'src/app/interfaces/extra';
-import { FormGroup, NgControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { AbstractControl, FormGroup, NgControl } from '@angular/forms';
 
 @Component({
   selector: 'app-extras-panel',
@@ -13,11 +13,13 @@ import { FormGroup, NgControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 export class ExtrasPanelComponent implements OnInit, AfterViewInit {
 
   @Input() inputExtras!: Extra[];
-  @Input() formGroup!: FormGroup;
+  @Input() parentForm: AbstractControl | null;
 
   constructor(
     private injector: Injector,
-  ) { }
+  ) {
+    this.parentForm = null;
+  }
 
   ngOnInit(): void {
 
@@ -26,9 +28,9 @@ export class ExtrasPanelComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     let ngControl: NgControl = this.injector.get(NgControl);
     if (ngControl) {
-      this.formGroup = ngControl.control as FormGroup;
+      this.parentForm = ngControl.control as FormGroup;
     } else {
-      console.error("Wait a minute...")
+      console.error("(!) Wait a minute...")
     }
   }
 }

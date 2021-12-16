@@ -1,5 +1,5 @@
 import { OrderService } from './../../services/order.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ProductService } from './../../services/product.service';
 import { Product } from './../../interfaces/product';
 import { Component, OnInit } from '@angular/core';
@@ -12,24 +12,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  public form = new FormGroup(
-    {
-      fcProduct: new FormControl(''),
-      fgExtras: new FormGroup({
-        fcPages: new FormControl(''),
-        fcLanguages: new FormControl(''),
-      }),
-      fcCustomerName: new FormControl(''),
-    }
-  );
+  public form = this.formBuilder.group({
+    fcProduct: [false],
+    fgExtras: this.formBuilder.group({
+      //los siguientes no están en camelCase porque en el html se bindea a "'fc'+{{extra.name}}" y el extra.name está en small caps
+      fcpages: ['', Validators.compose([Validators.pattern('^[1-9][0-9]*$'), Validators.min(1)])],
+      fclanguages:  ['', Validators.compose([Validators.pattern('^[1-9][0-9]*$'), Validators.min(1)])],
+    }),
+  });
 
-  public products: Product[] = [];
+  public products: Product[] = []; //Array para mostrarlos
   public customerName!: string;
   public orderPrice = 0;
 
   constructor(
-    private productService: ProductService, // gestiona los productos
-    private orderService: OrderService, // gestiona los pedidos
+    private formBuilder: FormBuilder,
+    private productService: ProductService,
+    private orderService: OrderService,
   ) {
   }
 
