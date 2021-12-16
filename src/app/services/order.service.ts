@@ -39,7 +39,7 @@ export class OrderService {
     this.order = new OrderModel('','', new Array<Product>(), 0);
   }
 
-  // Este añade el producto a la lista
+  // Este añade el producto a la lista de orders
   addProduct(product: Product){
     this.order.products.push(product);
     this.order.totalPrice = this.calcOrderPrice();

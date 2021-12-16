@@ -9,7 +9,7 @@
     <input type="checkbox" formControlName="fcCheck">
     <br>
     <ng-container *ngIf="fgInfo.value.fcCheck === true">
-        <app-extras-panel [inputExtras]="EXTRAS_WEB" [parentForm]="fgInfo.get('fgExtras')"></app-extras-panel>
+        <app-extras-panel [inputExtras]="EXTRAS_WEB" [parentForm]="fgInfo"></app-extras-panel>
     </ng-container>
 
     <p>Complete the form to enable button.</p>

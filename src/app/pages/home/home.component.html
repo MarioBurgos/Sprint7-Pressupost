@@ -8,7 +8,7 @@
                     <app-my-checkbox [product]="p" ngDefaultControl formControlName="fcProduct"></app-my-checkbox>
                     <div *ngIf="p.isChecked && p.extras.length >0">
                         <!-- si está check y si tiene un extra o más -->
-                        <app-extras-panel [inputExtras]="p.extras" ngDefaultControl [formGroup]="form.get('fgExtras')?.value"></app-extras-panel>
+                        <app-extras-panel [inputExtras]="p.extras" formGroupName="fgExtras" ngDefaultControl [parentForm]="form"></app-extras-panel>
                     </div>
                 </div>
                 <!-- input para nombre y botón submit -->
